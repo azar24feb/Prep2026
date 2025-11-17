@@ -35,4 +35,11 @@ public class Node {
         if (root == null) return 0;
         return Integer.max(height(root.left), height(root.right)) + 1;
     }
+
+    public static void printK(Node root, int k) {
+        if (root == null) return;
+        if (k == 0) System.out.println(root.key);
+        printK(root.left, k-1);
+        printK(root.right, k-1);
+    }
 }
