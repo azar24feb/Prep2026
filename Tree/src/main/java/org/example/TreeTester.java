@@ -1,7 +1,5 @@
 package org.example;
 
-import org.example.Node;
-
 public class TreeTester{
     public static void main(String[] args) {
         Node root = new Node(1);
@@ -13,10 +11,6 @@ public class TreeTester{
         root.right = new Node(3);
         root.right.right = new Node(6);
 
-//        Node.inOrder(root);
-        Node.preOrder(root);
-//         Node.postOrder(root);
-        int h = Node.height(root);
-        System.out.printf("Height %s", h);
+        Node.levelOrderTraversalWithQueue(root);
     }
 }
