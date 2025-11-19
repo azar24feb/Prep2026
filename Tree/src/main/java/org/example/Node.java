@@ -1,5 +1,6 @@
 package org.example;
 
+import javax.sound.midi.Soundbank;
 import java.util.LinkedList;
 import java.util.Queue;
 
@@ -60,11 +61,56 @@ public class Node {
         if (root == null) return;
         Queue<Node> q = new LinkedList<>();
         q.add(root);
-        while (!q.isEmpty()){
+        while (!q.isEmpty()) {
             Node curr = q.poll();
             System.out.println(curr.key);
             if (curr.left != null) q.add(curr.left);
             if (curr.right != null) q.add(curr.right);
         }
+    }
+
+    /**
+     * Level order traversal or Breadth First Search with Queue  and NewLine
+     */
+    public static void levelOrderTraversalWithQueueAndNewLine(Node root) {
+        if (root == null) return;
+        Queue<Node> q = new LinkedList<>();
+        q.add(root);
+        while (!q.isEmpty()) {
+            int size = q.size();
+            for (int i = 0; i < size; i++) {
+                Node curr = q.poll();
+                System.out.print(curr.key + " ");
+                if (curr.left != null) q.add(curr.left);
+                if (curr.right != null) q.add(curr.right);
+            }
+            System.out.println();
+        }
+    }
+
+    /**
+     * Size of Tree using BFS
+     */
+    public static void sizeBFS(Node root) {
+        if (root == null) return;
+        Queue<Node> q = new LinkedList<>();
+        q.add(root);
+        int size = 0;
+        while (!q.isEmpty()) {
+            Node curr = q.poll();
+            size++;
+            if (curr.left != null) q.add(curr.left);
+            if (curr.right != null) q.add(curr.right);
+
+        }
+        System.out.println("SizeBFS : " + size);
+    }
+
+    /**
+     * Size of Tree using DFS
+     */
+    public static int sizeDFS(Node root, int size) {
+        if (root == null) return 0;
+        return 1 + sizeDFS(root.left, size) + sizeDFS(root.right, size);
     }
 }

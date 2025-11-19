@@ -11,6 +11,8 @@ public class TreeTester{
         root.right = new Node(3);
         root.right.right = new Node(6);
 
-        Node.levelOrderTraversalWithQueue(root);
+//        Node.levelOrderTraversalWithQueueAndNewLine(root);
+        Node.sizeBFS(root);
+        System.out.println("SizeDFS : " + Node.sizeDFS(root, 0));
     }
 }
