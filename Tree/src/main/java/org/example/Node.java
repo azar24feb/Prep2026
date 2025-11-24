@@ -126,19 +126,42 @@ public class Node {
     /**
      * Print left view
      */
-    public static void leftView(Node root){
+    public static void leftView(Node root) {
         if (root == null) return;
         Queue<Node> q = new LinkedList<>();
         q.add(root);
-        while (!q.isEmpty()){
+        while (!q.isEmpty()) {
             int size = q.size();
             for (int i = 0; i < size; i++) {
                 Node curr = q.poll();
                 if (curr.left != null) q.add(curr.left);
-                if ( curr.right != null) q.add(curr.right);
-                System.out.print(curr.key + " ");
+                if (curr.right != null) q.add(curr.right);
+                if (i == 0)
+                    System.out.print(curr.key + " ");
             }
             System.out.println();
         }
     }
+
+    /**
+     * Print left view with Recursion
+     */
+    public static void leftViewRecursive(Node root, int level) {
+        if (root == null) return;
+
+    }
+
+    /**
+     * Children Sum Property
+     */
+    public static boolean childrenSumProperty(Node root){
+        if (root == null) return true;
+        if (root.left == null && root.right == null) return true;
+        int left = root.left == null ? 0 : root.left.key;
+        int right = root.right == null ? 0 : root.right.key;
+        if (root.key == left + right)
+            return (true && childrenSumProperty(root.left) && childrenSumProperty(root.right));
+        return false;
+    }
+
 }
