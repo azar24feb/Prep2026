@@ -113,4 +113,32 @@ public class Node {
         if (root == null) return 0;
         return 1 + sizeDFS(root.left, size) + sizeDFS(root.right, size);
     }
+
+    /**
+     * Max value in a BT
+     */
+    public static int maxValue(Node root) {
+        if (root == null) return 0;
+        if (root.left == null && root.right == null) return root.key;
+        return Integer.max(maxValue(root.left), maxValue(root.right));
+    }
+
+    /**
+     * Print left view
+     */
+    public static void leftView(Node root){
+        if (root == null) return;
+        Queue<Node> q = new LinkedList<>();
+        q.add(root);
+        while (!q.isEmpty()){
+            int size = q.size();
+            for (int i = 0; i < size; i++) {
+                Node curr = q.poll();
+                if (curr.left != null) q.add(curr.left);
+                if ( curr.right != null) q.add(curr.right);
+                System.out.print(curr.key + " ");
+            }
+            System.out.println();
+        }
+    }
 }
